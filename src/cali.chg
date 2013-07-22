@@ -1,0 +1,107 @@
+% Author H.-G. Graebe | Univ. Leipzig 
+% graebe@informatik.uni-leipzig.de
+
+CALI Changes from v. 2.1. to v. 2.2. : 
+=====================================
+
+19.10.93 analytic_spread corrected.
+	 bas_sieve : bas_zerodelete inserted.
+
+8.11.	 mo_degree -> mo_deg
+
+12.11.93 eqcar test for 'list or 'mat in
+                dp_from_a
+                matquot
+                matqquot
+        nzdp added.
+	flatten -> mat2list
+        mo_2list changed to return only nonzero factors.
+        proj_points!* : bug fixed.
+
+19.11.	module calimat added. It extends the internal REDUCE matrix
+		package and handles arbitrary expressions (also with
+		variable exponents. It contains
+		- a new minors(m,k) returning now a matrix.
+		- ideal_of_minors (formerly minors)
+		- pfaffian
+		- ideal_of_pfaffians
+
+1.12.	bug fixed in prime!=zeroprimes2 
+	mo_linear changed to return the support of m if linear
+
+6.5.94	In dp_fi and dp_fbc correct management of 0 added.
+
+9.9.94	prime : additional gbasis!* after matqquot inserted, since
+	matqquot returns non-GB, if the divisor is a unit. Works well
+	together with the additional GB-tag. 
+
+	modules red and groeb completely rewritten.
+20.12.  cali_trace() as procedure, setcalitrace
+21.12.  dpmat_unitideal!?
+        cali!=printterms + dp_print2
+        ring_lp
+        prime_zeroprimes1 + prime!=iszeroprime1 changed
+26.12.  moid_goodindepvarset
+29.12.  prime_zeroprime1 : Bug fixed
+
+1.1.95  revlex is now revrevlex
+24.1.   gb-tag introduced for dpmats
+	dpmat_make( ... , gbtag )
+        mora_* removed
+31.1.	binomial removed from the system. Code left !
+	interreduce!* : Bug fixed
+	ring_rlp modified as for revrevlex
+	mat2list with gbtag, if #cols=1
+	dpmat_neworder with gbtag slot
+	dpmat_sieve with gbtag slot.
+1.2.	new version of fgb incorporated.
+2.2.	switch lazy removed.
+	procedure gbtestversion included.
+3.2.	Bug using red_divtestBE in groeb!=lazydriver fixed. 
+7.2.	dpmat_from_dpoly returns the empty dpmat for the zero dpoly. 
+	affine_points!* -> affine_points1!*
+	proj_points!*	-> proj_points1!*
+	red_TailRed added
+8.2.	Borderbases included
+	dualbases.r included
+	New switch lexefgb -> module groebf 
+	triang.r included, dp_xlt added to dpolys
+	algebraic term order procedures changed into symbolic
+		operators. 
+	blockorder added.
+	simplified groeb!=critA added.
+	In algebraic interface now gbases are automatically computed
+		if needed.
+	intf-tag hilbertseries is now hs, 
+	hilbseries -> hilbertseries and hilbertseries!*, with
+		hftestversion as gftestversion to choose the
+		algorithm.  
+9.2.	Hilbert series are in a separate module.
+	dp_convert removed.
+	Weighted Hilbert series included.
+10.2.	setcaliprintterms implemented.
+	cali!=rules changed into 'rules on the property list of 'cali. 
+13.2.	dp_df and dp_jac removed (affects prime!=mksqrfree).
+	dp_convert changed to dp!=convert (affects hf!=whilb3).
+	mo_ecart corrected to employ the virtual degree of module
+		terms. 
+	red_better no only by dpoly length.
+	ring_rlp and ring_lp are now ring constructors and no more
+		block order constructors.
+	groeb_factorunits and groeb_deleteunits is now bas_factorunits
+		and bas_deleteunits.
+14.2.	prime!=isoprimes : dpmat_zero!? added.
+	odim!=parameter1 changed to handle empty ring correctly.
+	singular_locus is now a symbolic operator in the module
+		calimat. 
+
+To be done :
+
+eo(vars) : test cali!=basering for eliminationorder according to vars
+	-> eliminate
+
+If multivariate factorization is allowed, then one should use
+groebf_zeroprimes1(m,nil) instead of prime_zeroprimes1 m.
+
+lexefgb with zerodimensional ideal and not pure lex term order
+crashes, since the reduction to dimension zero is not necessary.
